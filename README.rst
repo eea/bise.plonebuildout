@@ -54,7 +54,7 @@ The first time you want to use this buildout you first have to get
 all software from subversion and then run a few commands::
 
    $ git clone git@github.com:eea/bise.plonebuildout.git
-   $ cd land.copernicus.plonebuildout
+   $ cd bise.plonebuildout
    $ ./install.sh -c devel.cfg
    $ ./bin/buildout -c devel.cfg
 
