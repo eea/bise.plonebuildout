@@ -26,8 +26,8 @@ Be sure that you have this software and libraries installed on the server
 before you run buildout. These must be globally installed by the server
 administrator.
 
- * python 2.7
- * python-dev (Debian/Ubuntu) / python-devel (RedHat/CentOS) (for python 2.7)
+ * python-2.6
+ * python-dev (Debian/Ubuntu) / python-devel (RedHat/CentOS)
  * wget
  * lynx
  * poppler-utils (for pdftotext etc)
@@ -47,16 +47,17 @@ administrator.
  * ImageMagick ver 6.3.7+ (read more under eea.converter)
  * git
  * libcurl3-dev (Debian/Ubuntu) / curl-devel (RedHat/CentOS)
+ * libbz2-dev (Debian/Ubuntu) / libbzip2-devel (RedHat/CentOS)
 
 Run buildout for development
 ----------------------------
 The first time you want to use this buildout you first have to get
-all software from subversion and then run a few commands::
+all software from github and then run a few commands::
 
    $ git clone git@github.com:eea/bise.plonebuildout.git
    $ cd bise.plonebuildout
-   $ ./install.sh -c devel.cfg
-   $ ./bin/buildout -c devel.cfg
+   $ ./install.sh -c development.cfg
+   $ ./bin/buildout -c development.cfg
 
 This first three steps only have to be done the first time you use this
 buildout. When you later want to update the site because people have committed
@@ -78,6 +79,7 @@ To debug::
 
 Run buildout for production (deployment)
 ----------------------------------------
+
 The above instructions are for developers.
 When running buildout in a production environment one should
 pass the configuration argument for deployment::
@@ -121,6 +123,7 @@ The project owner is Franz Daffner (franz.daffner at eea.europa.eu, +45 3336 714
 Other people involved in this project are:
 
  * Alberto Telletxea (atelletxea at bilbomatica.es)
+ * Mikel Santamaria (msantamaria at bilbomatica.es)
  * Mikel Larreategi (mlarreategi at codesyntax.com)
 
 Copyright and license
@@ -134,6 +137,7 @@ Source code
 ===========
 
 You can get the code for this project from:
+
  * https://github.com/eea/bise.plonebuildout (buildout)
  * https://github.com/eea/bise.theme (theme)
  * https://github.com/eea/bise.biodiversityfactsheet (content-types)
@@ -161,9 +165,4 @@ Software
 Any recent Linux version.
 apache2, memcached, any STMP local server.
 
-=======
-EEA Plone buildout example
-==========================
-
-Read more under https://github.com/eea/eea.plonebuildout.core
 
