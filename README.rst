@@ -48,6 +48,12 @@ administrator.
  * git
  * libcurl3-dev (Debian/Ubuntu) / curl-devel (RedHat/CentOS)
  * libbz2-dev (Debian/Ubuntu) / libbzip2-devel (RedHat/CentOS)
+ * libmysqlclient18 and libmysqlclient-dev (Debian/Ubuntu) / libmysqlclient and libmysqlclient-devel (RedHat/CentOS)
+
+This project also needs access to a MySQL database. Currently there is one that has the
+data for the current BISE site. Either that database should be migrated to this server
+or provide access from this servers to there.
+
 
 Run buildout for development
 ----------------------------
