@@ -147,6 +147,7 @@ You can get the code for this project from:
  * https://github.com/eea/bise.plonebuildout (buildout)
  * https://github.com/eea/bise.theme (theme)
  * https://github.com/eea/bise.biodiversityfactsheet (content-types)
+ * https://github.com/eea/bise.multilingualglossary
 
 Resources
 =========
