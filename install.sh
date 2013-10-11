@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+
+set -e
+#set -x
+FINDLINKS='http://eggrepo.eea.europa.eu/simple'
+INDEX='http://pypi.python.org/simple'
 
 SETUPTOOLS=`grep "setuptools\s*\=\s*" versions.cfg | sed 's/ *$//g' | sed 's/=$//g' | sed 's/\s*=\s*/==/g'`
 ZCBUILDOUT=`grep "zc\.buildout\s*=\s*" versions.cfg | sed 's/\s*=\s*/==/g'`
@@ -11,12 +16,29 @@ if [ -z "$ZCBUILDOUT" ]; then
   ZCBUILDOUT="zc.buildout"
 fi
 
-if [ -s "bin/activate" ]; then
-  echo "Updating setuptools: ./bin/easy_install" $SETUPTOOLS
-  ./bin/easy_install $SETUPTOOLS
+if [ -z "$PYTHON" ]; then
+  PYTHON="/usr/bin/env python2.6"
+fi
 
-  echo "Updating zc.buildout: ./bin/easy_install" $ZCBUILDOUT
-  ./bin/easy_install $ZCBUILDOUT
+# Make sure python is 2.6 or later
+PYTHON_OK=`$PYTHON -c 'import sys
+print (sys.version_info >= (2, 6) and "1" or "0")'`
+
+if [ "$PYTHON_OK" = '0' ]; then
+    echo "Python 2.6 or later is required"
+    echo "EXAMPLE: PYTHON=/path/to/python-2.6 ./install.sh"
+    exit 0
+fi
+
+echo "Using Python: "
+echo `$PYTHON --version`
+
+if [ -s "bin/activate" -a -s "bin/easy_install" ]; then
+  echo "Updating setuptools: ./bin/easy_install -i $INDEX -f $FINDLINKS -U $SETUPTOOLS"
+  ./bin/easy_install -i $INDEX -f $FINDLINKS -U $SETUPTOOLS
+
+  echo "Updating zc.buildout: ./bin/easy_install -i $INDEX -f $FINDLINKS -U $ZCBUILDOUT"
+  ./bin/easy_install -i $INDEX -f $FINDLINKS -U $ZCBUILDOUT
 
   echo ""
   echo "============================================================="
@@ -29,15 +51,19 @@ if [ -s "bin/activate" ]; then
 fi
 
 echo "Installing virtualenv"
-wget --no-check-certificate "http://raw.github.com/pypa/virtualenv/1.9.X/virtualenv.py" -O "/tmp/virtualenv.py"
+# NOTE: virtualenv now doesn't download anything by default, so we need to provide setuptools
+curl -o "setuptools-0.9.8.tar.gz" -k "https://pypi.python.org/packages/source/s/setuptools/setuptools-0.9.8.tar.gz#md5=243076241781935f7fcad370195a4291"
+curl -o "/tmp/virtualenv.py" -k "https://raw.github.com/pypa/virtualenv/master/virtualenv.py"
 
-echo "Running: python2.6 /tmp/virtualenv.py --clear ."
-python2.6 "/tmp/virtualenv.py" --clear --setuptools  .
-
+echo "Running: $PYTHON /tmp/virtualenv.py --clear ."
+$PYTHON "/tmp/virtualenv.py" --clear .
 rm /tmp/virtualenv.py*
 
-echo "Installing zc.buildout: $ ./bin/easy_install" $ZCBUILDOUT
-./bin/easy_install $ZCBUILDOUT
+echo "Updating setuptools: ./bin/easy_install -i $INDEX -f FINDLINKS -U $SETUPTOOLS"
+./bin/easy_install -i $INDEX -f $FINDLINKS -U $SETUPTOOLS
+
+echo "Installing zc.buildout: $ ./bin/easy_install -i $INDEX -f $FINDLINKS -U $ZCBUILDOUT"
+./bin/easy_install -i $INDEX -f $FINDLINKS -U $ZCBUILDOUT
 
 echo "Disabling the SSL CERTIFICATION for git"
 git config --global http.sslVerify false
@@ -53,7 +79,7 @@ rm -rf $TMP_CHECKOUT
 echo "Fixing permissions"
 SAVEIFS=$IFS
 IFS=$(echo -en "\n\b")
-chmod g+rw -R ./lib/python2.6
+chmod g+rw -R ./lib/python2.*
 IFS=$SAVEIFS
 
 echo ""
