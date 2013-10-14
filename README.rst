@@ -95,7 +95,7 @@ pass the configuration argument for deployment::
    $ ./install.sh -c deployment.cfg
    $ ./bin/buildout -c deployment.cfg
 
-The apache config for production is etc/apache/vh-bise.conf **CHECK**
+The apache config for production is etc/apache-vh.conf
 
 Now buildout will use the production configuration and install ldap product
 and other zope/plone products that are not used during web development.
@@ -113,7 +113,7 @@ Cron jobs to be setup on production and development
 
 On production::
 
-   $ crontab -e -u zope-www
+   $ crontab -e -u zope
    @reboot cd /var/local/bise.plonebuildout && bin/zope-start
 
 
