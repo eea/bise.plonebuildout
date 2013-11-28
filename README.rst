@@ -117,6 +117,19 @@ On production::
    @reboot cd /var/local/bise.plonebuildout && bin/zope-start
 
 
+Database packing
+------------------
+
+
+Packing is a vital regular maintenance procedure The Plone database
+does not automatically prune deleted content. You must periodically
+pack the database to reclaim space.
+
+Data.fs should be packed daily via a cron job::
+
+   01 2 * * * /eea.plonebuildout.MY-EEA-PORTAL/bin/zeopack
+
+
 EEA deployment
 --------------
 
