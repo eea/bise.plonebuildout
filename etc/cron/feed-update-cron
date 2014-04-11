@@ -1,0 +1,2 @@
+# Update feeds hourly
+0 * * * * wget http://biodiversity.europa.eu/update-bise-feeds

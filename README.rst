@@ -111,10 +111,12 @@ To run the debug instance use::
 Cron jobs to be setup on production and development
 ---------------------------------------------------
 
-On production::
+On production (chicken)::
 
    $ crontab -e -u zope
    @reboot cd /var/local/bise.plonebuildout && bin/zope-start
+
+On production (chicken) create symlinks from /var/local/bise.plonebuildout/etc/cron/feed-update-cron to /var/spool/cron/zope
 
 
 Database packing
