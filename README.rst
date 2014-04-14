@@ -131,6 +131,8 @@ Data.fs should be packed daily via a cron job::
 
    01 2 * * * /var/local/bise/bise.plonebuildout/bin/zeopack
 
+This cronjob is already set on the previous step when symlinking the cron-file to /var/spool/cron
+
 Logs
 ------
 
