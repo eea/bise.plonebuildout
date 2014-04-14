@@ -1,2 +1,5 @@
+# Pack ZEO database daily at 3:15
+15 3 * * *  /var/local/bise/bise.plonebuildout/bin/zeopack
+
 # Update feeds hourly
 0 * * * * wget http://biodiversity.europa.eu/update-bise-feeds
