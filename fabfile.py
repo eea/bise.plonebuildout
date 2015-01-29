@@ -24,7 +24,7 @@ def chicken():
 
     # The root of your Plone instance.
     env.directory = '/var/local/bise/bise.plonebuildout'
-    env.hosts = ['chicken.eea.europa.eu']
+    env.hosts = ['larreategi@chicken.eea.europa.eu']
 
 
 def _with_deploy_env(commands=[], use_sudo=True):
