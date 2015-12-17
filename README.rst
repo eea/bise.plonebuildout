@@ -50,6 +50,11 @@ administrator.
  * libbz2-dev (Debian/Ubuntu) / libbzip2-devel (RedHat/CentOS)
  * libmysqlclient18 and libmysqlclient-dev (Debian/Ubuntu) / libmysqlclient and libmysqlclient-devel (RedHat/CentOS)
 
+For CentOS 7 you should install:
+
+     yum install python-devel postgresql-devel libmemcached-devel zlib-devel  libxslt-devel libxml2-devel mariadb-devel python-devel openldap-devel
+
+
 This project also needs access to a MySQL database. Currently there is one that has the
 data for the current BISE site. Either that database should be migrated to this server
 or provide access from this servers to there.
