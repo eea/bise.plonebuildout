@@ -11,7 +11,7 @@
 
 RETVAL=0
 SUCMD='su -s /bin/bash zope -c'
-PREFIX='/var/local/bise/bise.plonebuildout'
+PREFIX='/var/local/bise.production'
 
 start_all() {
 

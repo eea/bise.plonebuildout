@@ -34,7 +34,7 @@ else
     OPTS=''
 fi
 SUCMD='su -s /bin/bash zope -c'
-PREFIX=/var/local/bise/bise.plonebuildout
+PREFIX=/var/local/bise.production
 INSTANCES=("www1" "www2" "www3" "www4" )
 INSTANCES+=("www-async" )
 
