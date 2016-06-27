@@ -34,13 +34,13 @@ else
     OPTS=''
 fi
 SUCMD='su -s /bin/bash zope -c'
-PREFIX=/var/local/bise.production
-INSTANCES=("www1" "www2" "www3" "www4" )
+PREFIX=/var/local/bise.acceptance
+INSTANCES=("www1" "www2" )
 INSTANCES+=("www-async" )
 
 PID_ZEO=$( cat "$PREFIX/var/zeoserver.pid" 2>/dev/null )
 PID_POUND=$( cat "$PREFIX/parts/poundconfig/var/pound.pid" 2>/dev/null )
-PID_MEMCACHED=$( cat "$PREFIX/var/memcached.pid.11211" 2>/dev/null )
+PID_MEMCACHED=$( cat "$PREFIX/var/memcached.pid.11212" 2>/dev/null )
 
 
 test -f $PREFIX/bin/zeoserver || exit 5
