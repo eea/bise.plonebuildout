@@ -54,6 +54,10 @@ For CentOS 7 you should install:
 
      yum install python-devel postgresql-devel libmemcached-devel zlib-devel  libxslt-devel libxml2-devel mariadb-devel python-devel openldap-devel
 
+Also, on Centos7: Microsoft core fonts
+
+    yum install curl cabextract xorg-x11-font-utils fontconfig
+    rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 
 This project also needs access to a MySQL database. Currently there is one that has the
 data for the current BISE site. Either that database should be migrated to this server
